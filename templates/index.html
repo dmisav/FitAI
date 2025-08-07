@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitAI Trainer - Your Personal Fitness Coach</title>
+    <!-- Favicon -->
+    <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg" type="image/svg+xml">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --fitness-green: #2ECC71;
+            --fitness-dark-green: #27AE60;
+            --fitness-orange: #E67E22;
+            --fitness-red: #E74C3C;
+            --fitness-blue: #3498DB;
+            --fitness-dark: #2C3E50;
+            --fitness-light: #ECF0F1;
+            --fitness-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        body {
+            background: var(--fitness-gradient);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .main-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .text-primary {
+            color: var(--fitness-green) !important;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, var(--fitness-green), var(--fitness-dark-green));
+            border: none;
+            font-weight: bold;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(45deg, var(--fitness-dark-green), var(--fitness-green));
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(46, 204, 113, 0.3);
+        }
+        
+        .form-control {
+            border-radius: 15px;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: var(--fitness-green);
+            box-shadow: 0 0 0 0.2rem rgba(46, 204, 113, 0.25);
+        }
+        
+        .alert-success {
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
+            border: none;
+            color: var(--fitness-dark);
+            border-radius: 15px;
+        }
+        
+        .result-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid var(--fitness-green);
+        }
+        
+        .fitness-icon {
+            font-size: 3rem;
+            color: var(--fitness-green);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--fitness-orange);
+            margin-bottom: 1rem;
+        }
+        
+        footer {
+            color: white;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--fitness-light);
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            color: var(--fitness-green);
+            text-decoration: underline;
+        }
+        
+        .input-suggestions {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        
+        .suggestion-tag {
+            display: inline-block;
+            background: var(--fitness-light);
+            color: var(--fitness-dark);
+            padding: 5px 12px;
+            border-radius: 20px;
+            margin: 2px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .suggestion-tag:hover {
+            background: var(--fitness-green);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <div class="main-container p-5">
+            <div class="text-center mb-5">
+                <div class="fitness-icon">
+                    <i class="fas fa-dumbbell"></i>
+                </div>
+                <h1 class="display-4 text-primary fw-bold">FitAI Trainer</h1>
+                <p class="lead text-secondary">Your AI-powered personal fitness coach</p>
+                <p class="text-muted">Get personalized workout plans, nutrition advice, and fitness guidance</p>
+            </div>
+            
+            <div class="row mb-5">
+                <div class="col-md-4 mb-3">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h5>Personalized Plans</h5>
+                        <p class="text-muted">Tailored workouts based on your goals and fitness level</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h5>Progress Tracking</h5>
+                        <p class="text-muted">Monitor your fitness journey with detailed analytics</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <h5>Expert Guidance</h5>
+                        <p class="text-muted">Professional advice from certified fitness experts</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
+                    <form method="POST" class="mb-4">
+                        <div class="mb-3">
+                            <label for="user_input" class="form-label fw-bold">
+                                <i class="fas fa-user-edit me-2"></i>Tell me about your fitness goals:
+                            </label>
+                            <textarea 
+                                class="form-control" 
+                                id="user_input" 
+                                name="user_input" 
+                                rows="4" 
+                                placeholder="e.g., I'm a beginner looking to lose 20 pounds and build muscle. I have 3 days a week to work out and access to a gym."
+                            ></textarea>
+                        </div>
+                        
+                        <div class="input-suggestions">
+                            <small class="text-muted mb-2 d-block">
+                                <i class="fas fa-lightbulb me-1"></i>Quick suggestions:
+                            </small>
+                            <div class="suggestion-tag" onclick="fillInput('I want to lose weight and tone up')">Weight Loss</div>
+                            <div class="suggestion-tag" onclick="fillInput('I want to build muscle and get stronger')">Muscle Building</div>
+                            <div class="suggestion-tag" onclick="fillInput('I want to improve my cardiovascular fitness')">Cardio Fitness</div>
+                            <div class="suggestion-tag" onclick="fillInput('I want a home workout plan with no equipment')">Home Workouts</div>
+                            <div class="suggestion-tag" onclick="fillInput('I want to train for a marathon')">Marathon Training</div>
+                            <div class="suggestion-tag" onclick="fillInput('I want to improve my flexibility and mobility')">Flexibility</div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary w-100 mt-3">
+                            <i class="fas fa-magic me-2"></i>Generate My Fitness Plan
+                        </button>
+                    </form>
+                    
+                    {% if workout_plan %}
+                    <div class="alert alert-success">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="fas fa-clipboard-list me-2"></i>
+                            <strong>Your Personalized Fitness Plan:</strong>
+                        </div>
+                        <div class="result-card">
+                            {{ workout_plan | safe }}
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        <footer class="text-center mt-5">
+            <small>
+                Built with <i class="fas fa-heart text-danger"></i> and powered by 
+                <a href="https://docs.github.com/en/github-models" target="_blank">GitHub Models</a>
+            </small>
+        </footer>
+    </div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        function fillInput(text) {
+            document.getElementById('user_input').value = text;
+        }
+    </script>
+</body>
+</html> 
