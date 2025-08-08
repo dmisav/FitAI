@@ -11,6 +11,9 @@ Your AI-powered personal fitness coach that generates personalized workout plans
 - ⚡ **Quick Suggestions**: Pre-built templates for common fitness goals
 - 🔒 **Safe & Reliable**: Built with safety and proper form in mind
 
+<img width="1245" height="724" alt="image" src="https://github.com/user-attachments/assets/05eea65f-612f-43bc-89d6-54860c65454f" />
+
+
 ## Getting Started
 
 ### Prerequisites
